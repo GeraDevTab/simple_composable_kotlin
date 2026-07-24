@@ -1,9 +1,10 @@
-package com.example.simplecomposable
+package com.example.simplecomposable.ui.theme
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -11,16 +12,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.simplecomposable.ui.theme.SimpleComposableTheme
+import com.example.simplecomposable.Greeting2
+import com.example.simplecomposable.ui.theme.ui.theme.SimpleComposableTheme
 
-class MainActivity : ComponentActivity() {
+class MultipleComposables : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             SimpleComposableTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
+                    profileScreen2(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -31,31 +33,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun profileScreen2(name: String, modifier: Modifier = Modifier) {
+    Column {
+        Greeting2()
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        )
+    }
 }
 
-@Composable
-fun Greeting2() {
-    Text(text = "Hello, Jetpack Compose!")
-}
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-//    SimpleComposableTheme {
-//        Greeting("Android")
-//    }
-//}
 
 @Preview(showBackground = true)
 @Composable
-fun Greeting2Preview() {
+fun GreetingPreview() {
     SimpleComposableTheme {
-        Greeting2()
-        //Greeting2()
+        profileScreen2("Android")
     }
 }

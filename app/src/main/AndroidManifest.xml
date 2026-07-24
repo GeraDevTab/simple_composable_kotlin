@@ -23,6 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.theme.MultipleComposables"
+            android:exported="false"
+            android:label="@string/title_activity_multiple_composables"
+            android:theme="@style/Theme.SimpleComposable"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SimpleComposable</string>
+    <string name="title_activity_multiple_composables">MultipleComposables</string>
 </resources>
