@@ -27,6 +27,8 @@ fun LoginForm() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
+    val isValid = email.isNotBlank() && password.isNotBlank()
+
     Column {
         OutlinedTextField(
             value = email,
@@ -44,17 +46,19 @@ fun LoginForm() {
                 Text("Password")
             }
         )
+        Button(
+            onClick = { },
+            enabled = isValid
+        ) {
+            Text("Sign in")
+        }
     }
 }
 
-@Composable
-fun SubmitButton() {
-    Button(
-        onClick = { }
-    ) {
-        Text("Sign in")
-    }
-}
+//@Composable
+//fun SubmitButton() {
+//
+//}
 
 @Preview(showBackground = true)
 @Composable
@@ -62,8 +66,8 @@ fun NameFieldPreview() {
     LoginForm()
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ButtonSubmitPreview() {
-    SubmitButton()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ButtonSubmitPreview() {
+//    SubmitButton()
+//}
