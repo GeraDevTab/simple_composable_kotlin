@@ -33,7 +33,7 @@ class MultipleComposables : ComponentActivity() {
         setContent {
             SimpleComposableTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchBar()
+                    funAlign()
                 }
             }
         }
@@ -74,27 +74,38 @@ fun profileScreen2(name: String, modifier: Modifier = Modifier) {
     }
 }
 
-@Composable
-fun SearchBar(modifier: Modifier = Modifier) {
-    TextField(
-        value="",
-        onValueChange = {
+//@Composable
+//fun SearchBar(modifier: Modifier = Modifier) {
+//    TextField(
+//        value="",
+//        onValueChange = {
+//
+//        },
+//        leadingIcon = {
+//            Icon(
+//                imageVector = Icons.Default.Search,
+//                contentDescription =  null
+//            )
+//        },
+//        colors = TextFieldDefaults.colors(),
+//        placeholder = {
+//            Text(stringResource(R.string.placeholder_search))
+//        },
+//        modifier = modifier
+//            .fillMaxWidth()
+//            .heightIn(min = 56.dp)
+//    )
+//}
 
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription =  null
-            )
-        },
-        colors = TextFieldDefaults.colors(),
-        placeholder = {
-            Text(stringResource(R.string.placeholder_search))
-        },
-        modifier = modifier
-            .fillMaxWidth()
-            .heightIn(min = 56.dp)
-    )
+@Composable
+fun WaterCounter(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(16.dp)) {
+        var count = 0
+        Text("You have had $count glasses")
+        Button(onClick = { count++ }, Modifier.padding(top = 8.dp)) {
+            Text("Add one")
+        }
+    }
 }
 
 
@@ -103,6 +114,6 @@ fun SearchBar(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     SimpleComposableTheme {
-        SearchBar()
+        WaterCounter()
     }
 }
