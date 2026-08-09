@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.simplecomposable.ui.screen.MultipleComposables.ElevatedCardExample
 import com.example.simplecomposable.ui.theme.Counter
 import com.example.simplecomposable.ui.theme.LoginForm
 import com.example.simplecomposable.ui.theme.SimpleComposableTheme
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
             SimpleComposableTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     //LoginForm()
-                    Counter()
+                    ElevatedCardExample()
                 }
             }
         }
