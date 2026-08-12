@@ -44,13 +44,15 @@ import com.example.simplecomposable.domain.PersonaDTO
 fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
     val state = rememberCarouselState(itemCount = { personas.count() }, initialItem = 0)
 
-    Column(verticalArrangement = Arrangement.Center) {
+    Column(verticalArrangement = Arrangement.Top, modifier = modifier.padding(top = 26.dp)) {
         HorizontalMultiBrowseCarousel(
             state = state,
             250.dp,
             modifier = Modifier.height(200.dp),
             itemSpacing = 10.dp
         ) { page ->
+            val persona = personas[page]
+
             Box(modifier = Modifier
                 .padding(10.dp)
                 .background(Color.Blue)
@@ -58,54 +60,59 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
                 .aspectRatio(0.5f),
                 contentAlignment = Alignment.Center
             ) {
+                AsyncImage(
+                    model = persona.url,
+                    contentDescription = "${persona.nombre} ${persona.apellido}",
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop)
                 Text(text = page.toString(), fontSize = 32.sp, color = Color.White)
             }
         }
     }
 
-    val layoutDirection = LocalLayoutDirection.current
-    val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
-    val navBarPadding = WindowInsets.navigationBars.asPaddingValues()
+//    val layoutDirection = LocalLayoutDirection.current
+//    val statusBarPadding = WindowInsets.statusBars.asPaddingValues()
+//    val navBarPadding = WindowInsets.navigationBars.asPaddingValues()
 
-    LazyColumn(
-        modifier = modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(
-            start = 16.dp + statusBarPadding.calculateStartPadding(layoutDirection),
-            top = 190.dp + statusBarPadding.calculateTopPadding(),
-            end = 16.dp + statusBarPadding.calculateEndPadding(layoutDirection),
-            bottom = 16.dp + navBarPadding.calculateBottomPadding()
-        ),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        items(personas) { persona ->
-
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-                    .background(Color.Blue),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp)
-                        .background(Color.Gray),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    AsyncImage(
-                        model = persona.url,
-                        contentDescription = "${persona.nombre} ${persona.apellido}",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(550.dp)
-                        //.clip(CircleShape)
-                    )
-                }
-
-            }
-        }
-    }
+//    LazyColumn(
+//        modifier = modifier.fillMaxWidth(),
+//        contentPadding = PaddingValues(
+//            start = 16.dp + statusBarPadding.calculateStartPadding(layoutDirection),
+//            top = 190.dp + statusBarPadding.calculateTopPadding(),
+//            end = 16.dp + statusBarPadding.calculateEndPadding(layoutDirection),
+//            bottom = 16.dp + navBarPadding.calculateBottomPadding()
+//        ),
+//        verticalArrangement = Arrangement.spacedBy(16.dp)
+//    ) {
+//        items(personas) { persona ->
+//
+//            Card(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .padding(vertical = 8.dp)
+//                    .background(Color.Blue),
+//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+//            ) {
+//                Row(
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .padding(12.dp)
+//                        .background(Color.Gray),
+//                    verticalAlignment = Alignment.CenterVertically
+//                ) {
+//                    AsyncImage(
+//                        model = persona.url,
+//                        contentDescription = "${persona.nombre} ${persona.apellido}",
+//                        contentScale = ContentScale.Crop,
+//                        modifier = Modifier
+//                            .size(550.dp)
+//                        //.clip(CircleShape)
+//                    )
+//                }
+//
+//            }
+//        }
+//    }
 }
 
 //@OptIn(ExperimentalMaterial3Api::class)
