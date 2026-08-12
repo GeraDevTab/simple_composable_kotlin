@@ -44,11 +44,11 @@ import com.example.simplecomposable.domain.PersonaDTO
 fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
     val state = rememberCarouselState(itemCount = { personas.count() }, initialItem = 0)
 
-    Column(verticalArrangement = Arrangement.Top, modifier = modifier.padding(top = 26.dp)) {
+    Column(verticalArrangement = Arrangement.Top, modifier = modifier.padding(top = 36.dp)) {
         HorizontalMultiBrowseCarousel(
             state = state,
-            250.dp,
-            modifier = Modifier.height(200.dp),
+            320.dp,
+            modifier = Modifier.height(400.dp),
             itemSpacing = 10.dp
         ) { page ->
             val persona = personas[page]
@@ -57,7 +57,7 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
                 .padding(10.dp)
                 .background(Color.Blue)
                 .fillMaxSize()
-                .aspectRatio(0.5f),
+                .aspectRatio(0.7f),
                 contentAlignment = Alignment.Center
             ) {
                 AsyncImage(
@@ -65,7 +65,7 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
                     contentDescription = "${persona.nombre} ${persona.apellido}",
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.Crop)
-                Text(text = page.toString(), fontSize = 32.sp, color = Color.White)
+                Text(text = persona.nombre, fontSize = 32.sp, color = Color.White)
             }
         }
     }
