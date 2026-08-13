@@ -21,9 +21,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
@@ -42,6 +47,7 @@ import com.example.simplecomposable.domain.PersonaDTO
 @ExperimentalMaterial3Api
 @Composable
 fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
+
     val state = rememberCarouselState(itemCount = { personas.count() }, initialItem = 0)
 
     Column(verticalArrangement = Arrangement.Top, modifier = modifier.padding(top = 36.dp)) {
@@ -67,6 +73,35 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
                     contentScale = ContentScale.Crop)
                 Text(text = persona.nombre, fontSize = 32.sp, color = Color.White)
             }
+        }
+    }
+    @Composable
+    fun NavigationBarExample() {
+        NavigationBar( windowInsets = NavigationBarDefaults.windowInsets ){
+            BottomNavigationItem(
+                selected = true,
+                onClick = { /*TODO*/ },
+                icon = { Icon( Icons.Filled.Favorite, null) },
+                label = { Text(text = "Aris")}
+            )
+            BottomNavigationItem(
+                selected = false,
+                onClick = { /*TODO*/ },
+                icon = { Icon( Icons.Filled.Favorite, null) },
+                label = { Text(text = "Aris")}
+            )
+            BottomNavigationItem(
+                selected = false,
+                onClick = { /*TODO*/ },
+                icon = { Icon( Icons.Filled.Favorite, null) },
+                label = { Text(text = "Aris")}
+            )
+            BottomNavigationItem(
+                selected = true,
+                onClick = { /*TODO*/ },
+                icon = { Icon( Icons.Filled.Favorite, null) },
+                label = { Text(text = "Aris")}
+            )
         }
     }
 
