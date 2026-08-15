@@ -22,11 +22,16 @@ import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Text
@@ -74,35 +79,35 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
                 Text(text = persona.nombre, fontSize = 32.sp, color = Color.White)
             }
         }
+        BottomAppBar(actions = {
+            IconButton(onClick = { print("Build") }) {
+                Icon(Icons.Filled.Build, contentDescription = "Build description")
+            }
+            IconButton(onClick = { print("Menu") }) {
+                Icon(
+                    Icons.Filled.Menu,
+                    contentDescription = "Menu description",
+                )
+            }
+            IconButton(onClick = { print("Favorite") }) {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Favorite description",
+                )
+            }
+            IconButton(onClick = { print("Delete") }) {
+                Icon(
+                    Icons.Filled.Delete,
+                    contentDescription = "Delete description",
+                )
+            }
+        },
+            containerColor = Color.Green)
     }
+
     @Composable
-    fun NavigationBarExample() {
-        NavigationBar( windowInsets = NavigationBarDefaults.windowInsets ){
-            BottomNavigationItem(
-                selected = true,
-                onClick = { /*TODO*/ },
-                icon = { Icon( Icons.Filled.Favorite, null) },
-                label = { Text(text = "Aris")}
-            )
-            BottomNavigationItem(
-                selected = false,
-                onClick = { /*TODO*/ },
-                icon = { Icon( Icons.Filled.Favorite, null) },
-                label = { Text(text = "Aris")}
-            )
-            BottomNavigationItem(
-                selected = false,
-                onClick = { /*TODO*/ },
-                icon = { Icon( Icons.Filled.Favorite, null) },
-                label = { Text(text = "Aris")}
-            )
-            BottomNavigationItem(
-                selected = true,
-                onClick = { /*TODO*/ },
-                icon = { Icon( Icons.Filled.Favorite, null) },
-                label = { Text(text = "Aris")}
-            )
-        }
+    fun BottomAppBarExample() {
+
     }
 
 //    val layoutDirection = LocalLayoutDirection.current
