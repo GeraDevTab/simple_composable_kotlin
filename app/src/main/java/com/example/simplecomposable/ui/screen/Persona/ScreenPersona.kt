@@ -40,9 +40,12 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TimePicker
+import androidx.compose.material3.TimePickerDefaults
 import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
 import androidx.compose.material3.carousel.rememberCarouselState
 import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.material3.rememberTimePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -129,14 +132,24 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
             onCheckedChange = { checkedState.value = it }
         )
 
-        val datePickerState = rememberDatePickerState()
-        Column(
-            modifier = modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            DatePicker(state = datePickerState)
-            Text(text = "Selected ${datePickerState.selectedDateMillis}")
-        }
+//        val datePickerState = rememberDatePickerState()
+//        Column(
+//            modifier = modifier.fillMaxSize(),
+//            horizontalAlignment = Alignment.CenterHorizontally
+//        ) {
+//            DatePicker(state = datePickerState)
+//            Text(text = "Selected ${datePickerState.selectedDateMillis}")
+//        }
+
+        val state = rememberTimePickerState()
+        TimePicker(
+            state = state,
+            modifier = Modifier.padding(15.dp),
+            colors = TimePickerDefaults.colors(),
+            layoutType = TimePickerDefaults.layoutType()
+        )
+        Text(text = "Hora seleccionada H:M = ${state.hour} : ${state.minute}")
+
     }
 
     @Composable
