@@ -26,6 +26,8 @@ import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -81,7 +83,8 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
         }
         BottomAppBar(actions = {
             IconButton(onClick = { print("Build") }) {
-                Icon(Icons.Filled.Build, contentDescription = "Build description")
+                Icon(Icons.Filled.Build,
+                    contentDescription = "Build description")
             }
             IconButton(onClick = { print("Menu") }) {
                 Icon(
@@ -99,6 +102,12 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
                 Icon(
                     Icons.Filled.Delete,
                     contentDescription = "Delete description",
+                )
+            }
+            BadgedBox(badge = { Badge { Text("8") } }) {
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Favorite"
                 )
             }
         },
