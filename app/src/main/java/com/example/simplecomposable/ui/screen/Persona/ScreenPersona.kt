@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Delete
@@ -66,7 +68,10 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
 
     val state = rememberCarouselState(itemCount = { personas.count() }, initialItem = 0)
 
-    Column(verticalArrangement = Arrangement.Top, modifier = modifier.padding(top = 36.dp)) {
+    Column(verticalArrangement = Arrangement.Top,
+        modifier = modifier
+            .padding(top = 36.dp)
+            .verticalScroll(rememberScrollState())) {
         HorizontalMultiBrowseCarousel(
             state = state,
             320.dp,
@@ -132,14 +137,14 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
             onCheckedChange = { checkedState.value = it }
         )
 
-//        val datePickerState = rememberDatePickerState()
-//        Column(
-//            modifier = modifier.fillMaxSize(),
-//            horizontalAlignment = Alignment.CenterHorizontally
-//        ) {
-//            DatePicker(state = datePickerState)
-//            Text(text = "Selected ${datePickerState.selectedDateMillis}")
-//        }
+        val datePickerState = rememberDatePickerState()
+        Column(
+            modifier = modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            DatePicker(state = datePickerState)
+            Text(text = "Selected ${datePickerState.selectedDateMillis}")
+        }
 
         val state = rememberTimePickerState()
         TimePicker(
