@@ -1,11 +1,14 @@
 package com.example.simplecomposable.ui.screen.Persona
 
+import android.widget.Space
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
@@ -28,6 +31,7 @@ import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.BottomAppBar
@@ -42,6 +46,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TimePicker
 import androidx.compose.material3.TimePickerDefaults
 import androidx.compose.material3.carousel.HorizontalMultiBrowseCarousel
@@ -154,6 +159,45 @@ fun PersonCard(personas: List<PersonaDTO>, modifier: Modifier = Modifier) {
             layoutType = TimePickerDefaults.layoutType()
         )
         Text(text = "Hora seleccionada H:M = ${state.hour} : ${state.minute}")
+
+        Spacer(modifier = Modifier.size(10.dp))
+
+        val openDialog = remember { mutableStateOf(true) }
+
+        if (openDialog.value) {
+            AlertDialog(
+                onDismissRequest = {
+                    openDialog.value = false
+                },
+                title = {
+                    Text(text = "Documentación  de AlertDialog")
+                },
+                text = {
+                    Text(
+                        "Descripción de la alerta de ejemplo de material 2."
+                    )
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            openDialog.value = false
+                        }
+                    ) {
+                        Text("Aceptar")
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {
+                            openDialog.value = false
+                        }
+                    ) {
+                        Text("Salir")
+                    }
+                }
+            )
+        }
+
 
     }
 
